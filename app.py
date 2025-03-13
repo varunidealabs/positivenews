@@ -192,6 +192,11 @@ st.markdown("""
         font-size: 16px !important;
     }
     
+    input[type="text"]::placeholder {
+        color: #5f6368 !important;
+        opacity: 1 !important;
+    }
+    
     /* News card */
     .news-card {
         background-color: #ffffff;
@@ -275,7 +280,7 @@ st.markdown("""
     
     .pagination-btn {
         background-color: #f2f2f2;
-        color: #202124;
+        color: #1b1e1d;
         border: 1px solid #dadce0;
         padding: 8px 20px;
         border-radius: 4px;
