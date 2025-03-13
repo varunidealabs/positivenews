@@ -196,11 +196,11 @@ st.markdown("""
     .news-card {
         background-color: #2d2d2d;
         border-radius: 4px;
-        padding: 20px;
-        margin-bottom: 18px;
+        padding: 22px;
+        margin-bottom: 22px;
         transition: transform 0.3s;
         border-left: 4px solid #4285f4;
-        min-height: 140px;
+        min-height: 160px;
     }
     
     .news-card:hover {
