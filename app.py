@@ -112,7 +112,7 @@ def get_base64_encoded_image():
     except Exception as e:
         # If error occurs, create and encode a blue icon
         # Create a small blue image
-        img = Image.new('RGB', (20, 20), color=(33, 150, 243))
+        img = Image.new('RGB', (20, 20), color=(66, 133, 244))
         buffered = io.BytesIO()
         img.save(buffered, format="PNG")
         return base64.b64encode(buffered.getvalue()).decode()
@@ -148,16 +148,16 @@ else:
     # Reset flag after using it
     st.session_state.reset_search = False
 
-# Custom CSS for styling the app
+# Custom CSS for styling the app - Light Theme version
 st.markdown("""
 <style>
-    /* Dark theme */
+    /* Light theme */
     .main {
-        background-color: #1e1e1e;
-        color: #ffffff;
+        background-color: #ffffff;
+        color: #202124;
     }
     .stApp {
-        background-color: #1e1e1e;
+        background-color: #ffffff;
     }
     
     /* App title styling */
@@ -165,7 +165,7 @@ st.markdown("""
         font-size: 28px;
         font-weight: 600;
         margin-bottom: 10px;
-        color: white;
+        color: #202124;
     }
     
     /* Search box */
@@ -186,46 +186,48 @@ st.markdown("""
         width: 100%;
         padding: 10px 15px;
         border-radius: 20px !important;
-        border: none !important;
-        background-color: #424242 !important;
-        color: white !important;
+        border: 1px solid #dadce0 !important;
+        background-color: #f1f3f4 !important;
+        color: #202124 !important;
         font-size: 16px !important;
     }
     
     /* News card */
     .news-card {
-        background-color: #2d2d2d;
-        border-radius: 4px;
+        background-color: #ffffff;
+        border-radius: 8px;
         padding: 22px;
         margin-bottom: 22px;
         transition: transform 0.3s;
         border-left: 4px solid #4285f4;
         min-height: 160px;
+        box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
     }
     
     .news-card:hover {
         transform: translateY(-2px);
+        box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
     }
     
     .news-source {
         display: inline-block;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 600;
-        color: #ff5722;
+        color: #5f6368;
         margin-bottom: 10px;
     }
     
     .news-title {
         font-size: 18px;
         font-weight: 500;
-        color: #ffffff;
+        color: #202124;
         margin-bottom: 12px;
         line-height: 1.4;
     }
     
     .news-time {
         font-size: 13px;
-        color: #9e9e9e;
+        color: #5f6368;
     }
     
     /* Category title */
@@ -233,7 +235,7 @@ st.markdown("""
         font-size: 22px;
         font-weight: 500;
         margin-bottom: 15px;
-        color: #ffffff;
+        color: #202124;
         border-bottom: 2px solid #4285f4;
         padding-bottom: 5px;
         display: inline-block;
@@ -242,7 +244,7 @@ st.markdown("""
     /* Divider */
     .divider {
         height: 1px;
-        background-color: #424242;
+        background-color: #dadce0;
         margin: 15px 0;
     }
     
@@ -250,7 +252,7 @@ st.markdown("""
     .full-coverage {
         display: flex;
         align-items: center;
-        color: #4285f4;
+        color: #1a73e8;
         text-decoration: none;
         font-size: 14px;
         font-weight: 500;
@@ -272,9 +274,9 @@ st.markdown("""
     }
     
     .pagination-btn {
-        background-color: #1e1e1e;
-        color: white;
-        border: 1px solid #444;
+        background-color: #ffffff;
+        color: #202124;
+        border: 1px solid #dadce0;
         padding: 8px 20px;
         border-radius: 4px;
         cursor: pointer;
@@ -285,7 +287,7 @@ st.markdown("""
     }
     
     .pagination-btn:hover {
-        background-color: #333;
+        background-color: #f1f3f4;
     }
     
     .pagination-btn svg {
@@ -301,8 +303,8 @@ st.markdown("""
     
     /* Style for active button */
     .stButton button {
-        background-color: #2d2d2d;
-        color: #9e9e9e;
+        background-color: #ffffff;
+        color: #5f6368;
         border: none;
         border-radius: 0;
         padding: 10px 15px;
@@ -311,19 +313,19 @@ st.markdown("""
     }
     
     .stButton button:hover {
-        color: #2196F3;
-        background-color: #2d2d2d;
+        color: #1a73e8;
+        background-color: #f8f9fa;
     }
     
     /* Override Streamlit button styles */
     .stButton>button:focus:not(:active) {
         border-color: transparent;
-        color: #2196F3;
+        color: #1a73e8;
     }
     
     .stButton>button:active {
-        background-color: #2d2d2d;
-        color: #2196F3;
+        background-color: #f8f9fa;
+        color: #1a73e8;
     }
     
     /* Navbar container */
@@ -331,10 +333,11 @@ st.markdown("""
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #2d2d2d;
+        background-color: #ffffff;
         padding: 0;
         margin-bottom: 25px;
         border-radius: 5px;
+        border-bottom: 1px solid #dadce0;
     }
     
     /* Column styling for navbar */
@@ -344,7 +347,7 @@ st.markdown("""
     
     /* Additional styling for subcategory buttons */
     .category-subcategory .stButton button {
-        background-color: #333;
+        background-color: #f8f9fa;
         border-radius: 20px;
         margin-right: 8px;
         padding: 8px 15px;
@@ -354,8 +357,8 @@ st.markdown("""
     .category-subcategory .stButton button:hover,
     .category-subcategory .stButton button:active,
     .category-subcategory .stButton button:focus:not(:active) {
-        background-color: #1e88e5;
-        color: white;
+        background-color: #e8f0fe;
+        color: #1a73e8;
     }
     
     /* Show subcategories button */
@@ -366,15 +369,15 @@ st.markdown("""
     
     .subcategory-button button {
         background-color: transparent !important;
-        color: #4285f4 !important;
-        border: 1px solid #4285f4 !important;
+        color: #1a73e8 !important;
+        border: 1px solid #1a73e8 !important;
         border-radius: 20px !important;
         padding: 5px 15px !important;
         font-size: 12px !important;
     }
     
     .subcategory-button button:hover {
-        background-color: rgba(66, 133, 244, 0.1) !important;
+        background-color: rgba(26, 115, 232, 0.1) !important;
     }
     
     /* Pagination button alignment */
@@ -489,13 +492,13 @@ else:
         formatted_time = format_time(published_time)
         
         # Determine border color based on source
-        border_color = "#4285f4"  # Default blue
+        border_color = "#4285f4"  # Default blue - Google's primary blue
         if "NDTV" in source:
-            border_color = "#ff5722"  # Orange
+            border_color = "#EA4335"  # Google's red
         elif "India Today" in source:
-            border_color = "#f44336"  # Red
+            border_color = "#FBBC05"  # Google's yellow
         elif "Economic Times" in source:
-            border_color = "#4caf50"  # Green
+            border_color = "#34A853"  # Google's green
         
         st.markdown(f'''
         <div class="news-card" style="border-left: 4px solid {border_color}">
