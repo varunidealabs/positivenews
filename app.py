@@ -304,7 +304,7 @@ st.markdown("""
     /* Style for active button */
     .stButton button {
         background-color: #f2f2f2;
-        color: #5f6368;
+        color: #1b1e1d;
         border: none;
         border-radius: 0;
         padding: 10px 15px;
