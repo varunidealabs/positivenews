@@ -412,7 +412,7 @@ st.markdown("""
 # Search box - centered with reduced width
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
-    search_query = st.text_input("", placeholder="Search for topics...", key="search_box", value=search_value)
+    search_query = st.text_input("", placeholder="Search for topics like ai,cricket,...", key="search_box", value=search_value)
     
 # Save current search for next render if not resetting
 if not st.session_state.reset_search:
