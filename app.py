@@ -119,7 +119,7 @@ def get_base64_encoded_image():
 
 # Streamlit UI
 st.set_page_config(
-    page_title="NewsHorizon",
+    page_title="News App",
     page_icon="📰",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -391,7 +391,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-
 # Search box - centered with reduced width
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
@@ -416,14 +415,14 @@ with cols[0]:
         st.session_state.reset_search = True
         st.rerun()
 with cols[1]:
-    if st.button("Tech", key="tech_btn", use_container_width=True):
+    if st.button("Technology", key="tech_btn", use_container_width=True):
         st.session_state.active_category = "Technology"
         st.session_state.page = 0
         st.session_state.reset_search = True
         st.rerun()
 with cols[2]:
-    if st.button("Movies", key="ent_btn", use_container_width=True):
-        st.session_state.active_category = "Movies"
+    if st.button("Entertainment", key="ent_btn", use_container_width=True):
+        st.session_state.active_category = "Entertainment"
         st.session_state.page = 0
         st.session_state.reset_search = True
         st.rerun()
