@@ -196,10 +196,11 @@ st.markdown("""
     .news-card {
         background-color: #2d2d2d;
         border-radius: 4px;
-        padding: 15px;
-        margin-bottom: 15px;
+        padding: 20px;
+        margin-bottom: 18px;
         transition: transform 0.3s;
         border-left: 4px solid #4285f4;
+        min-height: 140px;
     }
     
     .news-card:hover {
@@ -211,14 +212,14 @@ st.markdown("""
         font-size: 14px;
         font-weight: 600;
         color: #ff5722;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
     }
     
     .news-title {
         font-size: 18px;
         font-weight: 500;
         color: #ffffff;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         line-height: 1.4;
     }
     
@@ -376,6 +377,15 @@ st.markdown("""
         background-color: rgba(66, 133, 244, 0.1) !important;
     }
     
+    /* Pagination button alignment */
+    .prev-button {
+        text-align: left;
+    }
+    
+    .next-button {
+        text-align: right;
+    }
+    
     /* Remove Streamlit elements */
     #MainMenu {visibility: hidden;}
     header {visibility: hidden;}
@@ -500,14 +510,14 @@ else:
         </div>
         ''', unsafe_allow_html=True)
 
-# Pagination
-col1, col2 = st.columns(2)
+# Pagination with improved alignment
+col1, col2, col3 = st.columns([1, 3, 1])
 with col1:
-    if st.button("← Previous", key="prev") and st.session_state.page > 0:
+    if st.button("← Previous", key="prev", use_container_width=True) and st.session_state.page > 0:
         st.session_state.page -= 1
         st.rerun()
-with col2:
-    if st.button("Next →", key="next"):
+with col3:
+    if st.button("Next →", key="next", use_container_width=True):
         st.session_state.page += 1
         st.rerun()
 
