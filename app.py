@@ -454,7 +454,7 @@ with cols[0]:
         st.session_state.reset_search = True
         st.rerun()
 with cols[1]:
-    if st.button("Technology", key="tech_btn", use_container_width=True):
+    if st.button("Tech", key="tech_btn", use_container_width=True):
         st.session_state.active_category = "Technology"
         st.session_state.page = 0
         st.session_state.reset_search = True
