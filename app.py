@@ -62,7 +62,7 @@ def fetch_news_by_subcategory(category, subcategory, page):
             url = RSS_FEEDS["Entertainment"]
         else:
             # Search for subcategory within Entertainment
-            url = f"https://news.google.com/rss/search?q=entertainment+{subcategory.lower()}&hl=en-IN&gl=IN&ceid=IN:en"
+            url = f"https://news.google.com/rss/search?q=entertainment+india&hl=en-IN&gl=IN&ceid=IN:en"
     else:
         # Default to category feed
         url = RSS_FEEDS.get(category, RSS_FEEDS["Home"])
