@@ -391,8 +391,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Header and title
-st.markdown('<div class="app-title">NewsHorizon</div>', unsafe_allow_html=True)
 
 # Search box - centered with reduced width
 col1, col2, col3 = st.columns([1, 2, 1])
