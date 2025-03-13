@@ -12,7 +12,7 @@ import io
 RSS_FEEDS = {
     "Home": "https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en",
     "Technology": "https://news.google.com/rss/search?q=technology+india&hl=en-IN&gl=IN&ceid=IN:en",
-    "Entertainment": "https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNREU0T1Y4U0JYUm9nQVAB?hl=en-IN&gl=IN&ceid=IN:en",
+    "Entertainment": "https://news.google.com/rss/search?q=entertainment+india&hl=en-IN&gl=IN&ceid=IN:en",
     "Business": "https://news.google.com/rss/search?q=business+india&hl=en-IN&gl=IN&ceid=IN:en",
     "Sports": "https://news.google.com/rss/search?q=sports+india&hl=en-IN&gl=IN&ceid=IN:en",
     "Health": "https://news.google.com/rss/search?q=health+india&hl=en-IN&gl=IN&ceid=IN:en",
