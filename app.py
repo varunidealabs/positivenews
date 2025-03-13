@@ -7,6 +7,7 @@ from PIL import Image
 import pandas as pd
 import base64
 import io
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # Define RSS feed URLs
 RSS_FEEDS = {
@@ -20,18 +21,33 @@ RSS_FEEDS = {
     "World": "https://news.google.com/rss/search?q=world+news&hl=en-IN&gl=IN&ceid=IN:en"
 }
 
-# Define negative keywords
-NEGATIVE_KEYWORDS = ["crime", "death", "accident", "murder", "violence", "suicide", "attack", "tragedy", 
-                     "disaster", "fraud", "scandal", "abuse", "corruption", "injury"]
+# Define strong negative keyword list
+NEGATIVE_KEYWORDS = ["crime", "death", "accident", "murder", "violence", "suicide", 
+                     "attack", "tragedy", "disaster", "fraud", "scandal", "abuse", 
+                     "corruption", "injury", "rape", "terrorism", "kidnapping", 
+                     "war", "explosion", "massacre", "genocide"]
 
-# Function to filter negative news
+# Initialize VADER sentiment analyzer
+analyzer = SentimentIntensityAnalyzer()
+
+# Function to filter negative news with improved sentiment analysis
 def filter_positive_news(articles):
     filtered_articles = []
     for article in articles:
-        title_lower = article.title.lower()
-        summary_lower = article.summary.lower() if hasattr(article, "summary") else ""
-        if not any(word in title_lower or word in summary_lower for word in NEGATIVE_KEYWORDS):
+        title = article.title
+        summary = article.summary if hasattr(article, "summary") else ""
+        
+        # Step 1: Quick keyword check (Only on title for efficiency)
+        if any(re.search(rf"\b{word}\b", title.lower()) for word in NEGATIVE_KEYWORDS):
+            continue  # Skip if a negative keyword is found in the title
+        
+        # Step 2: Sentiment analysis using VADER
+        sentiment_score = analyzer.polarity_scores(title)['compound']
+        
+        # Allow only positive or neutral sentiment news
+        if sentiment_score >= 0.05:
             filtered_articles.append(article)
+    
     return filtered_articles
 
 # Function to fetch news
@@ -532,7 +548,6 @@ with col3:
 # Add debug info to the sidebar (hidden by default)
 if st.sidebar.checkbox("Show Debug Info", value=False):
     st.sidebar.write("Active Category:", st.session_state.active_category)
-    st.sidebar.write("Active Subcategory:", st.session_state.active_subcategory)
     st.sidebar.write("Page:", st.session_state.page)
     st.sidebar.write("Search Query:", search_query)
     st.sidebar.write("Session State:", st.session_state)
