@@ -63,6 +63,11 @@ def fetch_news(category, page):
 
 # Function to search news
 def search_news(keyword):
+    # Sanitize the search query by trimming whitespace and ensuring it's not empty
+    keyword = keyword.strip()
+    if not keyword:
+        return []
+        
     url = f"https://news.google.com/rss/search?q={keyword}&hl=en-IN&gl=IN&ceid=IN:en"
     try:
         feed = feedparser.parse(url)
@@ -497,8 +502,14 @@ st.markdown("</div>", unsafe_allow_html=True)
 
 # Get news based on search or category
 if search_query:
-    st.markdown(f'<div class="category-title">Search Results for: {search_query}</div>', unsafe_allow_html=True)
-    articles = search_news(search_query)
+    # Clean the search query for display
+    clean_query = search_query.strip()
+    if clean_query:
+        st.markdown(f'<div class="category-title">Search Results for: {clean_query}</div>', unsafe_allow_html=True)
+        articles = search_news(clean_query)
+    else:
+        st.markdown(f'<div class="category-title">Latest {st.session_state.active_category} News</div>', unsafe_allow_html=True)
+        articles = fetch_news(st.session_state.active_category, st.session_state.page)
 else:
     st.markdown(f'<div class="category-title">Latest {st.session_state.active_category} News</div>', unsafe_allow_html=True)
     articles = fetch_news(st.session_state.active_category, st.session_state.page)
