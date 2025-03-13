@@ -1,7 +1,3 @@
 streamlit
 requests
-python-dotenv
-nltk
-newspaper3k
-textblob
-transformers
+
