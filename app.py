@@ -274,7 +274,7 @@ st.markdown("""
     }
     
     .pagination-btn {
-        background-color: #ffffff;
+        background-color: #f2f2f2;
         color: #202124;
         border: 1px solid #dadce0;
         padding: 8px 20px;
@@ -287,7 +287,7 @@ st.markdown("""
     }
     
     .pagination-btn:hover {
-        background-color: #f1f3f4;
+        background-color: #e8f0fe;
     }
     
     .pagination-btn svg {
@@ -303,7 +303,7 @@ st.markdown("""
     
     /* Style for active button */
     .stButton button {
-        background-color: #ffffff;
+        background-color: #f2f2f2;
         color: #5f6368;
         border: none;
         border-radius: 0;
@@ -314,7 +314,7 @@ st.markdown("""
     
     .stButton button:hover {
         color: #1a73e8;
-        background-color: #f8f9fa;
+        background-color: #e8f0fe;
     }
     
     /* Override Streamlit button styles */
@@ -333,7 +333,7 @@ st.markdown("""
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #ffffff;
+        background-color: #f2f2f2;
         padding: 0;
         margin-bottom: 25px;
         border-radius: 5px;
